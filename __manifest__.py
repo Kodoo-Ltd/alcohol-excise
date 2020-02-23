@@ -6,8 +6,8 @@
     'application':True,
     'installable': True,
     'data': [
-#        'data/barcodes_data.xml',
-#        'views/barcodes_view.xml',
+        'views/excise_category_tree.xml',
+        'views/excise_menu.xml',
         'security/ir.model.access.csv',
 #        'views/barcodes_templates.xml',
     ],
