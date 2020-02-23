@@ -17,7 +17,7 @@ class excise_category(models.Model):
     tech_name = fields.Text('Technical Description')
     rate_per = fields.Selection([
         ('hectoabv','Rate per hectolitre per cent of alcohol in the beer'),
-        ('hectoprod','Rate per hectolitre of product'),
+        ('hectoprod','Rate per hectolitre of product'),   
         ('litrealco','Rate per litre of pure alcohol')
     ])
     add_cat = fields.Many2one('excise_category','Additional Category')

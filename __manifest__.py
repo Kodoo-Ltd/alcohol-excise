@@ -5,4 +5,10 @@
     'depends':['stock'],
     'application':True,
     'installable': True,
+    'data': [
+#        'data/barcodes_data.xml',
+#        'views/barcodes_view.xml',
+        'security/ir.model.access.csv',
+#        'views/barcodes_templates.xml',
+    ],
 }
