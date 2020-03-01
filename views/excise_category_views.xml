@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="excise_category_tree_view" model="ir.ui.view">
+        <field name="name">Excise Category List</field>
+        <field name="model">excise.category</field>
+        <field name="arch" type="xml">
+            <tree string="Excise Categories">
+                <field name="name"/>
+                <field name="tech_name"/>
+                <field name="rate_per"/>
+                <field name="add_cat"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="excise_category_form_view" model="ir.ui.view">
+        <field name="name">Excise Category Form</field>
+        <field name="model">excise.category</field>
+        <field name="arch" type="xml">
+            <form string="Excise Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tech_name"/>
+                    </group>
+                    <group>
+                        <field name="rate_per"/>
+                        <field name="add_cat"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="excise_category_rate_tree_view" model="ir.ui.view">
+        <field name="name">Excise Category Rates</field>
+        <field name="model">excise.category.rate</field>
+        <field name="arch" type="xml">
+            <tree string="Excise Rates">
+                <field name="category_id"/>
+                <field name="name"/>
+                <field name="rate"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

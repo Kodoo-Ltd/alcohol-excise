@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="excise_test_item" name="TEST"/>
+    <menuitem id="menu_excise_config" name="Excise" parent="stock.menu_stock_config_settings" sequence="50"/>
 
     <act_window id="excise_action_categories"
         name="Excise Categories"
@@ -10,6 +10,6 @@
     <menuitem id="menu_excise_categories"
         name="Excise Categories"
         action="excise_action_categories"
-        parent = "excise_test_item"        
+        parent = "menu_excise_config"        
     />
 </odoo>

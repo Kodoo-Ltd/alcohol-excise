@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record forcecreate="0" id="rate" model="res.currency.rate">
+            <field name="rate">19.08</field>
+            <field name="category_id" ref="BEERGENERAL"/>
+            <field name="name">2010-01-01</field>
+        </record>
+    </data>
+</odoo>
