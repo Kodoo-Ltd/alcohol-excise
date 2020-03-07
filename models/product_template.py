@@ -5,4 +5,4 @@ class ProductTemplate(models.Model):
 
     excise_active = fields.Boolean('Track Excise',default=False)
     excise_abv = fields.Float('ABV',help='Average By Volume (% Alcohol')
-    excise_category = fields.Many2one('excise_category','Excise Category')
+    excise_category = fields.Many2one('excise.category','Excise Category')

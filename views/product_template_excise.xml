@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="product_template_excise">
+            <field name="name">product.template_excise_inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <page name="inventory" position="after">
+                    <page name="excise" string="Excise">
+                        <group name="excise" string="Excise">
+                            <label for="excise_active"/>
+                            <div class="o_row" name="excise_active_row">
+                                <field name="excise_active" string="Track Excise" widget="boolean_toggle"/>
+                            </div>
+                            <label for="excise_abv"/>
+                            <div class="o_row" name="excise_abv_row" string="ABV" help="Average By Volume (% alcohol in product)" attrs="{'invisible':[('excise_active', '=', False)]}">
+                                <label for="excise_abv"/>
+                                <field name="excise_abv" string="ABV" help="Average By Volume (% alcohol in product)"/>
+                            </div>
+                            <label for="excise_category"/>
+                            <div class="o_row" name="excise_category_row" attrs="{'invisible':[('excise_active', '=', False)]}">
+                                <label for="excise_category"/>
+                                <field name="excise_category" string="Excise Category" />
+                            </div>
+                        </group>
+                    </page>
+                </page>
+            </field>     
+        </record>
+    </data>
+</odoo>

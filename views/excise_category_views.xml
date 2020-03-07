@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+            <record id="excise_category_rate_tree_view" model="ir.ui.view">
+            <field name="name">Excise Category Rates</field>
+            <field name="model">excise.category.rate</field>
+            <field name="arch" type="xml">
+                <tree string="Excise Rates">
+                    <field name="category_id"/>
+                    <field name="name"/>
+                    <field name="rate"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="excise_category_rate_form_view" model="ir.ui.view">
+            <field name="name">Excise Category Rate</field>
+            <field name="model">excise.category.rate</field>
+            <field name="arch" type="xml">
+                <form string="Excise Rate">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="rate" digits="[12,2]"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="excise_category_tree_view" model="ir.ui.view">
             <field name="name">Excise Category List</field>
             <field name="model">excise.category</field>
@@ -40,35 +69,6 @@
                         <group>
                             <field name="rate_per"/>
                             <field name="add_cat"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-        <record id="excise_category_rate_tree_view" model="ir.ui.view">
-            <field name="name">Excise Category Rates</field>
-            <field name="model">excise.category.rate</field>
-            <field name="arch" type="xml">
-                <tree string="Excise Rates">
-                    <field name="category_id"/>
-                    <field name="name"/>
-                    <field name="rate"/>
-                </tree>
-            </field>
-        </record>
-
-        <record id="excise_category_rate_form_view" model="ir.ui.view">
-            <field name="name">Excise Category Rate</field>
-            <field name="model">excise.category.rate</field>
-            <field name="arch" type="xml">
-                <form string="Excise Rate">
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="rate" digits="[12,2]"/>
-                            </group>
                         </group>
                     </sheet>
                 </form>
