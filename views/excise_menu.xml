@@ -5,7 +5,7 @@
     <act_window id="excise_action_categories"
         name="Excise Categories"
         res_model="excise.category"
-        view_mode="tree"
+        view_mode="tree,form"
     />
     <menuitem id="menu_excise_categories"
         name="Excise Categories"

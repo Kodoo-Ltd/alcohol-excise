@@ -16,7 +16,7 @@ class excise_category(models.Model):
     rate = fields.Float(compute='_compute_current_rate', string='Current Rate', digits=0,
                     help='The rate of the currency to the currency of rate 1.')
 
-    add_cat = fields.Many2one('excise_category','Additional Category')
+    add_cat = fields.Many2one('excise.category','Additional Category')
 
     #@api.depends(self) //date?
     def _compute_current_rate(self):
