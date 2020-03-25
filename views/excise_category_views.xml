@@ -5,7 +5,7 @@
             <field name="name">Excise Category Rates</field>
             <field name="model">excise.category.rate</field>
             <field name="arch" type="xml">
-                <tree string="Excise Rates">
+                <tree string="Excise Rates" editable='bottom'>
                     <field name="category_id"/>
                     <field name="name"/>
                     <field name="rate"/>
@@ -38,6 +38,7 @@
                     <field name="name"/>
                     <field name="tech_name"/>
                     <field name="rate_per"/>
+                    <field name='rate'/>
                     <field name="add_cat"/>
                 </tree>
             </field>
@@ -68,6 +69,7 @@
                         </group>
                         <group>
                             <field name="rate_per"/>
+                            <field name="rate"/>
                             <field name="add_cat"/>
                         </group>
                     </sheet>

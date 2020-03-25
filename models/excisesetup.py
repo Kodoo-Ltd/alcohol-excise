@@ -17,14 +17,33 @@ class excise_category(models.Model):
                     help='The rate of the currency to the currency of rate 1.')
 
     add_cat = fields.Many2one('excise.category','Additional Category')
+    date = fields.Date(compute='_compute_date')
+    rate_ids = fields.One2many('excise.category.rate', 'category_id', string='Rates')
 
-    #@api.depends(self) //date?
+    @api.depends('rate_ids.rate') 
     def _compute_current_rate(self):
-        #date = self._context.get('date') or fields.Date.today()
-        #currency_rates = self._get_rates(company, date)
+        date = self._context.get('date') or fields.Date.today()
+        excise_rates = self._get_rates(date)
         for cat in self:
-        #    cat.rate = currency_rates.get(currency.id) or 0
-            cat.rate = 1
+            cat.rate = excise_rates.get(cat.id) or 0
+
+    def _get_rates(self,  date):
+        self.env['excise.category.rate'].flush(['rate', 'category_id', 'name'])
+        query = """SELECT ec.id,
+                    COALESCE((SELECT ecr.rate FROM excise_category_rate ecr
+                        WHERE category_id = ec.id AND ecr.name <= %s
+                        ORDER BY "name" DESC
+                        LIMIT 1), 1.0) AS ecr
+                    FROM excise_category ec
+                WHERE ec.id IN %s"""
+        self._cr.execute(query, (date,  tuple(self.ids)))
+        category_rates = dict(self._cr.fetchall())
+        return category_rates
+
+    @api.depends('rate_ids.name')
+    def _compute_date(self):
+        for category in self:
+            category.date = category.rate_ids[:1].name
 
 
 class excise_category_rate(models.Model):
@@ -35,3 +54,4 @@ class excise_category_rate(models.Model):
                            default=lambda self: fields.Date.today())
     category_id = fields.Many2one('excise.category', string='Category', readonly=True)
     rate = fields.Float('Rate')
+

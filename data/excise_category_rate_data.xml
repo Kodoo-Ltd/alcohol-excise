@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- see https://www.gov.uk/government/publications/alcohol-duty-rate-changes/alcohol-duty-rate-changes -->
     <data noupdate="0">
         <record forcecreate="0" id="rate" model="res.currency.rate">
             <field name="rate">19.08</field>
             <field name="category_id" ref="BEERGENERAL"/>
-            <field name="name">2010-01-01</field>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rate" model="res.currency.rate">
+            <field name="rate">5.69</field>
+            <field name="category_id" ref="BEERHIGH"/>
+            <field name="name">2017-03-13</field>
+        </record>        
+        <record forcecreate="0" id="rate" model="res.currency.rate">
+            <field name="rate">8.42</field>
+            <field name="category_id" ref="BEERLOW"/>
+            <field name="name">2017-03-13</field>
+        </record>        
+        <record forcecreate="0" id="rate" model="res.currency.rate">
+            <field name="rate">40.38</field>
+            <field name="category_id" ref="CIDERSTILLLOW"/>
+            <field name="name">2017-03-13</field>
         </record>
     </data>
 </odoo>
