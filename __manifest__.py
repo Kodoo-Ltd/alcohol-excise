@@ -11,6 +11,6 @@
         'views/excise_menu.xml',
         'security/ir.model.access.csv',
         'data/excise_category_data.xml',
-        #'data/excise_category_rate_data.xml',
+        'data/excise_category_rate_data.xml',
     ],
 }
