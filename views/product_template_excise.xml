@@ -13,12 +13,24 @@
                             <div class="o_row" name="excise_active_row">
                                 <field name="excise_active" string="Track Excise" widget="boolean_toggle"/>
                             </div>
+                            <p>
                             <div class="o_row" name="excise_abv_row" attrs="{'invisible':[('excise_active', '=', False)]}">
                                 <label for="excise_abv"/>
                                 <field name="excise_abv" string="ABV" help="Average By Volume (% alcohol in product)"/>
+                            </div>
+                            </p>
+                            <p>
+                            <div class="o_row" name="excise_abv_row" attrs="{'invisible':[('excise_active', '=', False)]}">
                                 <label for="excise_category"/>
                                 <field name="excise_category" string="Excise Category" />
                             </div>
+                            </p>
+                            <p>
+                            <div class="o_row" name="excise_abv_row" attrs="{'invisible':[('excise_active', '=', False)]}">
+                                <label for="excise_volume" />
+                                <field name="excise_volume" string="Excisable Volume (L)" />
+                            </div>
+                            </p>
                         </group>
                     </page>
                 </page>
