@@ -5,22 +5,27 @@
             <field name='name'>Beer-General</field>
             <field name='tech_name'>Beer - General Beer Duty</field>
             <field name='rate_per' >hectoabv</field>
+            <field name="currency_id" ref="base.GBP"/>   
         </record>
         <record id='BEERHIGH' model = 'excise.category'>
             <field name='name'>Beer-High</field>
             <field name='tech_name'>Exceeding 7.5% abv - in addition to the General Beer Duty</field>
             <field name='rate_per' >hectoabv</field>
             <field name='add_cat' ref='BEERGENERAL'/>
+            <field name="currency_id" ref="base.GBP"/>               
         </record>
         <record id='BEERLOW' model = 'excise.category'>
             <field name='name'>Beer-Low</field>
             <field name='tech_name'>Exceeding 1.2% - not exceeding 2.8% abv</field>
             <field name='rate_per' >hectoabv</field>
+            <field name="currency_id" ref="base.GBP"/>               
         </record>
         <record id='CIDERSTILLLOW' model = 'excise.category'>
             <field name='name'>Cider-Still-Low</field>
             <field name='tech_name'>Still cider and perry Exceeding 1.2% - less than 6.9% abv</field>
             <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
         </record>
+        -->
     </data>
 </odoo>

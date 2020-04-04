@@ -66,6 +66,7 @@
                         <group>
                             <field name="name"/>
                             <field name="tech_name"/>
+                            <field name="currency_id"/>
                         </group>
                         <group>
                             <field name="rate_per"/>

@@ -12,13 +12,13 @@ class excise_category(models.Model):
         ('hectoprod','Rate per hectolitre of product'),   
         ('litrealco','Rate per litre of pure alcohol')
     ])
-    #rate_ids = fields.One2many('excise.category.rate', 'category_id', string='Rates')
-    rate = fields.Float(compute='_compute_current_rate', string='Current Rate', digits=0,
+    rate = fields.Monetary(compute='_compute_current_rate', string='Current Rate', digits=0,
                     help='The rate of the currency to the currency of rate 1.')
 
     add_cat = fields.Many2one('excise.category','Additional Category')
     date = fields.Date(compute='_compute_date')
     rate_ids = fields.One2many('excise.category.rate', 'category_id', string='Rates')
+    currency_id = fields.Many2one('res.currency', string="Currency")
 
     @api.depends('rate_ids.rate') 
     def _compute_current_rate(self):
@@ -45,6 +45,20 @@ class excise_category(models.Model):
         for category in self:
             category.date = category.rate_ids[:1].name
 
+    #@api.model
+    #def _calc_excise(self,product,quantity):
+    #    values={}
+    #    values['excise_abv'] = product.excise_abv
+    #    values['excise_move_volume'] =  quantity * product.excise_volume 
+    #    values['excise_alcohol'] = values.get('excise_move_volume') * product.excise_abv
+    #    values['excise_category'] = product.excise_category
+    #    values['excise_category_rate'] = product.excise_category.rate
+    #    #if product.excise_category.add_cat:
+
+    #    return(values)
+
+
+
 
 class excise_category_rate(models.Model):
     _name = 'excise.category.rate'
@@ -53,5 +67,11 @@ class excise_category_rate(models.Model):
     name = fields.Date(string='Start Date', required=True, index=True,
                            default=lambda self: fields.Date.today())
     category_id = fields.Many2one('excise.category', string='Category', readonly=True)
-    rate = fields.Float('Rate')
+    rate = fields.Monetary('Rate')
 
+    currency_id = fields.Many2one('res.currency', string="Currency", compute='_compute_currency', readonly = True)
+
+    @api.depends('category_id')
+    def _compute_currency(self):
+        for ecr in self:
+            ecr.currency_id = ecr.category_id.currency_id
