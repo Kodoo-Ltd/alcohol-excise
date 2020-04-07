@@ -18,6 +18,7 @@ class excise_category(models.Model):
     add_cat = fields.Many2one('excise.category','Additional Category')
     date = fields.Date(compute='_compute_date')
     rate_ids = fields.One2many('excise.category.rate', 'category_id', string='Rates')
+    company_id = fields.Many2one('res.company', string='Company', readonly=True, index=True)
     currency_id = fields.Many2one('res.currency', string="Currency")
 
     @api.depends('rate_ids.rate') 
@@ -45,17 +46,31 @@ class excise_category(models.Model):
         for category in self:
             category.date = category.rate_ids[:1].name
 
-    #@api.model
-    #def _calc_excise(self,product,quantity):
-    #    values={}
-    #    values['excise_abv'] = product.excise_abv
-    #    values['excise_move_volume'] =  quantity * product.excise_volume 
-    #    values['excise_alcohol'] = values.get('excise_move_volume') * product.excise_abv
-    #    values['excise_category'] = product.excise_category
-    #    values['excise_category_rate'] = product.excise_category.rate
-    #    #if product.excise_category.add_cat:
+    @api.model
+    def _calc_excise(self,product,quantity):
+        alcohol_vol = quantity * product.excise_volume * product.excise_abv / 100
+        values = {
+            #'product_id' : product.id,       
+            'move_qty' : quantity,
+            'excise_abv' : product.excise_abv,
+            'excise_move_volume' : quantity * product.excise_volume,
+            'excise_alcohol': alcohol_vol,
+            'name' : alcohol_vol,
+        }
+        
+        excise_categories = [] #list
+        cat_values = {
+            'company_id' : product.excise_category.company_id,
+            'currency_id' : product.excise_category.currency_id.id,
+            'excise_category' : product.excise_category.id,
+            'excise_rate' :product.excise_category.rate,
+            'excise_amount_tax' : alcohol_vol * product.excise_category.rate,
+        }
+        excise_categories.append(cat_values)
+        values['excise_categories'] = excise_categories
+        
 
-    #    return(values)
+        return values
 
 
 

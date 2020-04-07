@@ -24,7 +24,7 @@ class StockMove(models.Model):
                 values['excise_abv'] = product.excise_abv
                 values['excise_move_volume'] =  values.get('product_uom_qty') * product.excise_volume 
                 values['excise_alcohol'] = values.get('excise_move_volume') * values.get('excise_abv')
-                values['excise_category'] = product.excise_category
+                values['excise_category'] = product.excise_category.id
 
                 values['excise_test'] = "Rate is %s" % product.excise_category.rate
 
