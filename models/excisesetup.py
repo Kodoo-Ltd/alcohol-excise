@@ -50,12 +50,10 @@ class excise_category(models.Model):
     def _calc_excise(self,product,quantity):
         alcohol_vol = quantity * product.excise_volume * product.excise_abv / 100
         values = {
-            #'product_id' : product.id,       
             'move_qty' : quantity,
             'excise_abv' : product.excise_abv,
             'excise_move_volume' : quantity * product.excise_volume,
             'excise_alcohol': alcohol_vol,
-            'name' : alcohol_vol,
         }
         
         excise_categories = [] #list
@@ -64,9 +62,28 @@ class excise_category(models.Model):
             'currency_id' : product.excise_category.currency_id.id,
             'excise_category' : product.excise_category.id,
             'excise_rate' :product.excise_category.rate,
-            'excise_amount_tax' : alcohol_vol * product.excise_category.rate,
         }
+        if product.excise_category.rate_per == 'hectoabv':
+            values['excise_amount_tax'] = alcohol_vol * product.excise_category.rate
+        elif product.excise_category.rate_per == 'hectoprod':
+            values['excise_amount_tax'] = quantity * product.excise_volume * product.excise_category.rate
+        elif product.excise_category.rate_per == 'litrealco':
+            values['excise_amount_tax'] = alcohol_vol * product.excise_category.rate
         excise_categories.append(cat_values)
+        if product.excise_category.add_cat:
+            cat_values = {
+                'company_id' : product.excise_category.company_id,
+                'currency_id' : product.excise_category.currency_id.id,
+                'excise_category' : product.excise_category.add_cat.id,
+                'excise_rate' :product.excise_category.add_cat.rate,
+            }
+            if product.excise_category.add_cat.rate_per == 'hectoabv':
+                values['excise_amount_tax'] = alcohol_vol * product.excise_category.add_cat.rate
+            elif product.excise_category.add_cat.rate_per == 'hectoprod':
+                values['excise_amount_tax'] = quantity * product.excise_volume * product.excise_category.add_cat.rate
+            elif product.excise_category.add_cat.rate_per == 'litrealco':
+                values['excise_amount_tax'] = alcohol_vol * product.excise_category.add_cat.rate
+            excise_categories.append(cat_values)
         values['excise_categories'] = excise_categories
         
 

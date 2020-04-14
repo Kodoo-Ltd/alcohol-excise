@@ -11,7 +11,7 @@ class Location(models.Model):
 
     excise_unpaid = fields.Boolean('Duty Unpaid',help='Location stores stock wtihout excise', compute='_compute_excise_unpaid')
     excise_paid_manual = fields.Boolean('Duty Paid location', helop='Location is a duty paid location within a duty unpaid warehouse')
-    excise_whseno = fields.Char('Excise Warehouse No.', help='number issued by tax authority to suspend excise liablity', compute='_compute_whseno')
+    excise_warehouse_no = fields.Char('Excise Warehouse No.', help='number issued by tax authority to suspend excise liablity', compute='_compute_whseno')
 
 
     @api.depends('excise_paid_manual')
@@ -26,5 +26,5 @@ class Location(models.Model):
     
     def _compute_whseno(self):
         for loc in self:
-            loc.excise_whseno =  loc.get_warehouse().excise_warehouse_no
+            loc.excise_warehouse_no =  loc.get_warehouse().excise_warehouse_no
             
