@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="excise_move_tree" model="ir.ui.view">
+        <field name="name">Excise Lines</field>
+        <field name="model">excise.move</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id"/>
+                <field name="date"/>
+                <field name="move_reference"/>
+                <field name="move_state"/>
+                <field name="excise_abv"/>
+                <field name="excise_move_volume"/>
+                <field name="excise_alcohol"/>
+                <field name="excise_category"/>
+                <field name="excise_rate"/>
+                <field name="excise_amount_tax"/>
+                <field name="excise_payable"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="excise_move_search" model="ir.ui.view">
+        <field name="name">excise.move.search</field>
+        <field name="model">excise.move</field>
+        <field name="arch" type="xml">
+            <search string="Excise Lines">
+                <field name="product_id"/>
+                <field name="move_reference" string="Transfer"/>
+                <separator/>
+                <filter string="To Do" name="todo" domain="[('move_state', 'not in', ['done', 'draft'])]"/>
+                <filter string="Done" name="done" domain="[('move_state', '=', 'done')]"/>
+                <separator/>
+                <filter string="Date" name="today" date="date"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Excise Category" name="groupby_excise_category" domain="[]" context="{'group_by': 'excise_category'}"/>
+                    <filter string="Product" name="groupby_product_id" domain="[]" context="{'group_by': 'product_id'}"/>
+                    <filter string="Date" name="by_date" domain="[]" context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="excise_move_action" model="ir.actions.act_window">
+        <field name="name">Excise Moves</field>
+        <field name="res_model">excise.move</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,pivot,form</field>
+        <field name="view_id" ref="excise_move_tree"/>
+        <!--<field name="context">{'search_default_done': 1, 'search_default_groupby_product_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                There are no excise lines yet
+            </p>
+            <!--<p>
+                This menu gives you the full traceability of inventory operations on a specific product.
+                You can filter on the product to see all the past movements for the product.
+            </p>-->
+        </field>
+    </record>
+
+    <menuitem id="excise_move_menu" 
+        name="Excise Moves"
+        action="excise_move_action" 
+        parent="stock.menu_warehouse_report" sequence="350"/>
+
+
+</odoo>
