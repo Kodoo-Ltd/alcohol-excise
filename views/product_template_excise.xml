@@ -36,5 +36,28 @@
                 </page>
             </field>     
         </record>
+
+        <record model="ir.ui.view" id="product_product_tree_excise">
+            <field name="name">excise.product_product_tree_inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="excise_volume"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_product_variant_easy_edit_view_excise">
+            <field name="name">excise.product_product_tree_inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+            <field name="arch" type="xml">
+                <group name="weight" position="after">
+                    <field name="excise_volume"/>
+                </group>
+            </field>
+        </record>
+
     </data>
 </odoo>

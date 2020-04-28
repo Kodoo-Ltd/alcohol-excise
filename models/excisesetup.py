@@ -48,11 +48,11 @@ class excise_category(models.Model):
 
     @api.model
     def _calc_excise(self,product,quantity):
-        alcohol_vol = quantity * product.excise_volume * product.excise_abv / 100
+        alcohol_vol = quantity * product._get_excise_volume() * product.excise_abv / 100
         values = {
             'move_qty' : quantity,
             'excise_abv' : product.excise_abv,
-            'excise_move_volume' : quantity * product.excise_volume,
+            'excise_move_volume' : quantity * product._get_excise_volume(),
             'excise_alcohol': alcohol_vol,
         }
         
@@ -66,7 +66,7 @@ class excise_category(models.Model):
         if product.excise_category.rate_per == 'hectoabv':
             values['excise_amount_tax'] = alcohol_vol * product.excise_category.rate
         elif product.excise_category.rate_per == 'hectoprod':
-            values['excise_amount_tax'] = quantity * product.excise_volume * product.excise_category.rate
+            values['excise_amount_tax'] = quantity * product._get_excise_volume() * product.excise_category.rate
         elif product.excise_category.rate_per == 'litrealco':
             values['excise_amount_tax'] = alcohol_vol * product.excise_category.rate
         excise_categories.append(cat_values)
@@ -80,7 +80,7 @@ class excise_category(models.Model):
             if product.excise_category.add_cat.rate_per == 'hectoabv':
                 values['excise_amount_tax'] = alcohol_vol * product.excise_category.add_cat.rate
             elif product.excise_category.add_cat.rate_per == 'hectoprod':
-                values['excise_amount_tax'] = quantity * product.excise_volume * product.excise_category.add_cat.rate
+                values['excise_amount_tax'] = quantity * product._get_excise_volume() * product.excise_category.add_cat.rate
             elif product.excise_category.add_cat.rate_per == 'litrealco':
                 values['excise_amount_tax'] = alcohol_vol * product.excise_category.add_cat.rate
             excise_categories.append(cat_values)

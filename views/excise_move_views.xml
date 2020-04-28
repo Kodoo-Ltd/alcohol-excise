@@ -10,6 +10,10 @@
                 <field name="date"/>
                 <field name="move_reference"/>
                 <field name="move_state"/>
+                <field name="move_qty"/>
+                <field name="move_location_id"/>
+                <field name="move_location_dest_id"/>
+                <field name="move_partner_id"/>
                 <field name="excise_abv"/>
                 <field name="excise_move_volume"/>
                 <field name="excise_alcohol"/>
