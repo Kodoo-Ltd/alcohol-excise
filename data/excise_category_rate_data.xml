@@ -22,5 +22,73 @@
             <field name="category_id" ref="CIDERSTILLLOW"/>
             <field name="name">2017-03-13</field>
         </record>
+        <record forcecreate="0" id="rateCIDERSTILLMED" model="excise.category.rate">
+            <field name="rate">50.71</field>
+            <field name="category_id" ref="CIDERSTILLMED"/>
+            <field name="name">2017-03-13</field>
+        </record>        
+        <record forcecreate="0" id="rateCIDERSTILLHIGH" model="excise.category.rate">
+            <field name="rate">61.04</field>
+            <field name="category_id" ref="CIDERSTILLHIGH"/>
+            <field name="name">2017-03-13</field>
+        </record>        
+        <record forcecreate="0" id="rateCIDERSPARKLOW" model="excise.category.rate">
+            <field name="rate">40.38</field>
+            <field name="category_id" ref="CIDERSPARKLOW"/>
+            <field name="name">2017-03-13</field>
+        </record>        
+        <record forcecreate="0" id="rateCIDERSPARKHIGH" model="excise.category.rate">
+            <field name="rate">288.10</field>
+            <field name="category_id" ref="CIDERSPARKHIGH"/>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rateSPIRITS" model="excise.category.rate">
+            <field name="rate">28.74</field>
+            <field name="category_id" ref="SPIRITS"/>
+            <field name="name">2017-03-13</field>
+        </record>
+
+        <record forcecreate="0" id="rateSPIRITSBASED" model="excise.category.rate">
+            <field name="rate">28.74</field>
+            <field name="category_id" ref="SPIRITSBASED"/>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rateWINEVERYLOW" model="excise.category.rate">
+            <field name="rate">91.68</field>
+            <field name="category_id" ref="WINEVERYLOW"/>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rateWINELOW" model="excise.category.rate">
+            <field name="rate">126.08</field>
+            <field name="category_id" ref="WINELOW"/>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rateWINEMEDSTILL" model="excise.category.rate">
+            <field name="rate">297.57</field>
+            <field name="category_id" ref="WINEMEDSTILL"/>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rateWINEHIGH" model="excise.category.rate">
+            <field name="rate">396.72</field>
+            <field name="category_id" ref="WINEHIGH"/>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rateWINEMEDSPARK" model="excise.category.rate">
+            <field name="rate">288.10</field>
+            <field name="category_id" ref="WINEMEDSPARK"/>
+            <field name="name">2017-03-13</field>
+        </record>
+
+        <record forcecreate="0" id="rateWINEHIGHSPARK" model="excise.category.rate">
+            <field name="rate">381.15</field>
+            <field name="category_id" ref="WINEHIGHSPARK"/>
+            <field name="name">2017-03-13</field>
+        </record>
+        <record forcecreate="0" id="rateWINEVERYHIGH" model="excise.category.rate">
+            <field name="rate">28.74</field>
+            <field name="category_id" ref="WINEVERYHIGH"/>
+            <field name="name">2017-03-13</field>
+        </record>
+
     </data>
 </odoo>

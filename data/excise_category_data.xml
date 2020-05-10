@@ -1,31 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!--ref https://www.gov.uk/government/publications/rates-and-allowance-excise-duty-alcohol-duty/alcohol-duty-rates-from-24-march-2014-->
     <data noupdate="0">
         <record id='BEERGENERAL' model = 'excise.category'>
-            <field name='name'>Beer-General</field>
+            <field name='name'>Beer - General Beer Duty</field>
             <field name='tech_name'>Beer - General Beer Duty</field>
             <field name='rate_per' >hectoabv</field>
             <field name="currency_id" ref="base.GBP"/>   
         </record>
         <record id='BEERHIGH' model = 'excise.category'>
-            <field name='name'>Beer-High</field>
+            <field name='name'>Beer - high strength: </field>
             <field name='tech_name'>Exceeding 7.5% abv - in addition to the General Beer Duty</field>
             <field name='rate_per' >hectoabv</field>
             <field name='add_cat' ref='BEERGENERAL'/>
             <field name="currency_id" ref="base.GBP"/>               
         </record>
         <record id='BEERLOW' model = 'excise.category'>
-            <field name='name'>Beer-Low</field>
+            <field name='name'>Beer - lower strength: </field>
             <field name='tech_name'>Exceeding 1.2% - not exceeding 2.8% abv</field>
             <field name='rate_per' >hectoabv</field>
             <field name="currency_id" ref="base.GBP"/>               
         </record>
         <record id='CIDERSTILLLOW' model = 'excise.category'>
-            <field name='name'>Cider-Still-Low</field>
+            <field name='name'>Still cider and perry - Low</field>
             <field name='tech_name'>Still cider and perry Exceeding 1.2% - less than 6.9% abv</field>
             <field name='rate_per' >hectoprod</field>
             <field name="currency_id" ref="base.GBP"/>               
         </record>
-        -->
+        <record id='CIDERSTILLMED' model = 'excise.category'>
+            <field name='name'>Still cider and perry - Medium</field>
+            <field name='tech_name'>At least 6.9% - not exceeding 7.5% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='CIDERSTILLHIGH' model = 'excise.category'>
+            <field name='name'>Still cider and perry - High</field>
+            <field name='tech_name'>Exceeding 7.5% - less than 8.5% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='CIDERSPARKLOW' model = 'excise.category'>
+            <field name='name'>Sparkling cider and perry - Low</field>
+            <field name='tech_name'>Exceeding 1.2% - not exceeding 5.5% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='SPIRITS' model = 'excise.category'>
+            <field name='name'>Spirits</field>
+            <field name='tech_name'>Spirits</field>
+            <field name='rate_per' >litrealco</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='SPIRITSBASED' model = 'excise.category'>
+            <field name='name'>Spirits-based</field>
+            <field name='tech_name'>Spirits-based: Ready-to-drinks</field>
+            <field name='rate_per' >litrealco</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='WINEVERYLOW' model = 'excise.category'>
+            <field name='name'>Wine and made-wine: </field>
+            <field name='tech_name'>Exceeding 1.2% - not exceeding 4% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='WINELOW' model = 'excise.category'>
+            <field name='name'>Wine and made-wine: </field>
+            <field name='tech_name'>Exceeding 4% - not exceeding 5.5% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='WINEMEDSTILL' model = 'excise.category'>
+            <field name='name'>Still wine and made-wine: </field>
+            <field name='tech_name'>Exceeding 5.5% - not exceeding 15% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='WINEHIGH' model = 'excise.category'>
+            <field name='name'>Wine and made-wine: </field>
+            <field name='tech_name'>Exceeding 15% - not exceeding 22% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='WINEMEDSPARK' model = 'excise.category'>
+            <field name='name'>Sparkling wine and made-wine: </field>
+            <field name='tech_name'>Exceeding 5.5% - less than 8.5% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='WINEHIGHSPARK' model = 'excise.category'>
+            <field name='name'>Sparkling wine and made-wine: </field>
+            <field name='tech_name'>8.5% and above - not exceeding 15% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
+        <record id='WINEVERYHIGH' model = 'excise.category'>
+            <field name='name'>Wine and made-wine:</field>
+            <field name='tech_name'>Exceeding 22% abv</field>
+            <field name='rate_per' >litrealco</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
     </data>
 </odoo>
