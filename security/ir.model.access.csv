@@ -3,4 +3,5 @@ access_excise_category_user,Excise Category User,model_excise_category,stock.gro
 access_excise_category_manager,Excise Category Manager,model_excise_category,stock.group_stock_manager,1,1,1,1
 access_excise_category_rate_user,Excise Category User,model_excise_category_rate,stock.group_stock_user,1,0,0,0
 access_excise_category_rate_manager,Excise Category Manager,model_excise_category_rate,stock.group_stock_manager,1,1,1,1
-access_excise_move,Excise Category User,model_excise_move,stock.group_stock_user,1,0,0,0
+access_excise_move_user,Excise Category User,model_excise_move,stock.group_stock_user,1,1,1,1
+access_excise_move_manager,Excise Category Manager,model_excise_move,stock.group_stock_manager,1,1,1,1

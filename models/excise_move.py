@@ -26,16 +26,14 @@ class excise_move(models.Model):
         ('assigned', 'Available'),
         ('done', 'Done')], string='Status',
         copy=False, default='draft', index=True, readonly=True,
-        compute='_compute_move')
-
-    
-    move_reference = fields.Char(compute='_compute_move', string="Reference", store=True)
+        related='stock_move_id.state')   
+    move_reference = fields.Char(related='stock_move_id.reference', string="Reference", store=True)
     move_location_id = fields.Many2one('stock.location', 'Source Location',
-                compute='_compute_move', readonly=True)
+                related='stock_move_id.location_id', readonly=True)
     move_location_dest_id = fields.Many2one('stock.location', 'Destination Location',
-                compute='_compute_move', readonly=True)
+                related='stock_move_id.location_dest_id', readonly=True)
     move_partner_id = fields.Many2one('res.partner', 'Destination Address ',
-                compute='_compute_move', readonly=True)
+                related='stock_move_id.partner_id', readonly=True)
 
     excise_abv = fields.Float('ABV',help='Average By Volume (% Alcohol)',readonly=True)
     excise_move_volume = fields.Float('Excisable Volume (L)', help='Volume being moved for the basis of the Excise calculation')
@@ -46,11 +44,11 @@ class excise_move(models.Model):
     excise_payable = fields.Monetary(string='Total Excise Amount.',help='Total excise payable after releifs (e.g. samll brewers allowance)',readonly=True)
 
 
-    def _compute_move(self):
-        for em in self:
-            em.move_state = em.stock_move_id.state
-            em.move_reference = em.stock_move_id.reference
-            em.date = em.stock_move_id.date
-            em.move_location_id = em.stock_move_id.location_id
-            em.move_location_dest_id = em.stock_move_id.location_dest_id
-            em.move_partner_id = em.stock_move_id.partner_id
+    #def _compute_move(self):
+    #    for em in self:
+    #        em.move_state = em.stock_move_id.state
+    #        em.move_reference = em.stock_move_id.reference
+    #        em.date = em.stock_move_id.date
+    #        em.move_location_id = em.stock_move_id.location_id
+    #        em.move_location_dest_id = em.stock_move_id.location_dest_id
+    #        em.move_partner_id = em.stock_move_id.partner_id

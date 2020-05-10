@@ -53,8 +53,14 @@
             <field name="model">product.product</field>
             <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
             <field name="arch" type="xml">
-                <group name="weight" position="after">
-                    <field name="excise_volume"/>
+                <group name="weight" position="after">                
+                    <group name="excise" string="Excise" attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}">
+                        <label for="excise_volume"/>
+                        <div class="o_row">
+                            <field name="excise_volume"/>
+                            <span>L</span>
+                        </div>
+                    </group>
                 </group>
             </field>
         </record>
