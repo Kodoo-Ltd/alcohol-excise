@@ -41,6 +41,7 @@
                 <group expand="0" string="Group By">
                     <filter string="Excise Category" name="groupby_excise_category" domain="[]" context="{'group_by': 'excise_category'}"/>
                     <filter string="Product" name="groupby_product_id" domain="[]" context="{'group_by': 'product_id'}"/>
+                    <filter string="Status" name="by_state" domain="[]"  context="{'group_by': 'move_state'}"/>
                     <filter string="Date" name="by_date" domain="[]" context="{'group_by': 'date'}"/>
                 </group>
             </search>
@@ -53,10 +54,10 @@
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,pivot,form</field>
         <field name="view_id" ref="excise_move_tree"/>
-        <!--<field name="context">{'search_default_done': 1, 'search_default_groupby_product_id': 1}</field>-->
+        <field name="context">{'search_default_done': 1, 'search_default_groupby_excise_category': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_empty_folder">
-                There are no excise lines yet
+                There are no excise move lines yet
             </p>
             <!--<p>
                 This menu gives you the full traceability of inventory operations on a specific product.

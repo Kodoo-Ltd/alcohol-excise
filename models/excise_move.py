@@ -26,7 +26,7 @@ class excise_move(models.Model):
         ('assigned', 'Available'),
         ('done', 'Done')], string='Status',
         copy=False, default='draft', index=True, readonly=True,
-        related='stock_move_id.state')   
+        related='stock_move_id.state',store=True)   
     move_reference = fields.Char(related='stock_move_id.reference', string="Reference", store=True)
     move_location_id = fields.Many2one('stock.location', 'Source Location',
                 related='stock_move_id.location_id', readonly=True)
