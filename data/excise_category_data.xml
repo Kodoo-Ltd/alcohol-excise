@@ -45,6 +45,13 @@
             <field name='rate_per' >hectoprod</field>
             <field name="currency_id" ref="base.GBP"/>               
         </record>
+        
+        <record id='CIDERSPARKHIGH' model = 'excise.category'>
+            <field name='name'>Sparkling cider and perry - High</field>
+            <field name='tech_name'>Exceeding 5.5% - less than 8.5% abv</field>
+            <field name='rate_per' >hectoprod</field>
+            <field name="currency_id" ref="base.GBP"/>               
+        </record>
         <record id='SPIRITS' model = 'excise.category'>
             <field name='name'>Spirits</field>
             <field name='tech_name'>Spirits</field>
