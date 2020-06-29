@@ -6,10 +6,7 @@ This app has been developed to help users of Odoo who work with alcoholic bevera
 
 The UK legislation is laid down in [HMRC notice 226](https://www.gov.uk/government/publications/excise-notice-226-beer-duty/excise-notice-226-beer-duty--2). Other EU countries work under similar rules.
 
-  
-
-This software is Free and Open source and is available on my [Github](https://github.com/jamescs50/Odoo-Excise)
-
+This software is Free and Open source.
 ### Installation
 
 You must have the Inventory (stock) module installed before you install the Excise module. Clone the repository into the custom add-ons folder defined in your Odoo configuration file. After updating your Apps list the Excise-Alcohol app will become available for installation.
