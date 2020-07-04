@@ -13,7 +13,7 @@ class excise_move(models.Model):
         check_company=True,index=True)
     date = fields.Datetime(
         'Date', default=fields.Datetime.now, index=True, required=True,
-        readonly= True,compute='_compute_move',store=True)
+        readonly= True,related='stock_move_id.date'store=True)
     company_id = fields.Many2one('res.company', string='Company', readonly=True, index=True)
     currency_id = fields.Many2one('res.currency', string="Currency",readonly=True)
     product_id = fields.Many2one('product.product', 'Product', check_company=True, domain="[('type', '!=', 'service'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")

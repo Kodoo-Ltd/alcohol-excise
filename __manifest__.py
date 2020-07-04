@@ -3,7 +3,7 @@
     'description':'Track excise on movements of alcoholic beverages subject to excise',
     'author':'James Carr-Saunders',
     'website':'kodoo.co.uk',
-    'license':'LGPL-3'
+    'license':'LGPL-3',
     'category':'Operations',
     'depends':['base','product','stock'],
     'application':True,
