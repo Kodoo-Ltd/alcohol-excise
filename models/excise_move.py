@@ -13,7 +13,7 @@ class excise_move(models.Model):
         check_company=True,index=True)
     date = fields.Datetime(
         'Date', default=fields.Datetime.now, index=True, required=True,
-        readonly= True,related='stock_move_id.date'store=True)
+        readonly= True,related='stock_move_id.date',store=True)
     company_id = fields.Many2one('res.company', string='Company', readonly=True, index=True)
     currency_id = fields.Many2one('res.currency', string="Currency",readonly=True)
     product_id = fields.Many2one('product.product', 'Product', check_company=True, domain="[('type', '!=', 'service'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
@@ -43,12 +43,3 @@ class excise_move(models.Model):
     excise_amount_tax = fields.Monetary(string='Excise Amount', readonly=True)
     excise_payable = fields.Monetary(string='Total Excise Amount.',help='Total excise payable after releifs (e.g. samll brewers allowance)',readonly=True)
 
-
-    #def _compute_move(self):
-    #    for em in self:
-    #        em.move_state = em.stock_move_id.state
-    #        em.move_reference = em.stock_move_id.reference
-    #        em.date = em.stock_move_id.date
-    #        em.move_location_id = em.stock_move_id.location_id
-    #        em.move_location_dest_id = em.stock_move_id.location_dest_id
-    #        em.move_partner_id = em.stock_move_id.partner_id
